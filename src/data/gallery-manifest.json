@@ -1,0 +1,126 @@
+{
+  "generatedAt": "2026-05-29T00:05:19.422Z",
+  "gallery": [
+    {
+      "file": "Screenshot 2026-05-28 172101.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172101.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172112.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172112.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172118.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172118.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172123.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172123.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172139.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172139.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172145.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172145.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172151.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172151.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172155.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172155.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172159.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172159.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172206.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172206.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172211.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172211.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172215.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172215.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172230.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172230.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172235.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172235.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172244.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172244.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172249.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172249.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172308.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172308.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172315.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172315.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172417.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172417.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172423.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172423.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172427.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172427.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172433.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172433.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172446.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172446.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172523.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172523.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172558.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172558.png"
+    },
+    {
+      "file": "Screenshot 2026-05-28 172610.png",
+      "src": "/assets/store/gallery/Screenshot 2026-05-28 172610.png"
+    }
+  ],
+  "named": {
+    "storefront": "/assets/store/storefront.jpg",
+    "plants": "/assets/store/plants.jpg",
+    "flowers": "/assets/store/flowers.jpg",
+    "shrubs-trees": "/assets/store/shrubs-trees.jpg",
+    "herbs": "/assets/store/herbs.jpg",
+    "pots-planters": "/assets/store/pots-planters.jpg",
+    "yard-art": "/assets/store/yard-art.jpg",
+    "signs-decor": "/assets/store/signs-decor.jpg",
+    "mulch-soil": "/assets/store/mulch-soil.jpg",
+    "seasonal": "/assets/store/seasonal.jpg",
+    "patio-porch": "/assets/store/patio-porch.jpg",
+    "garden-supplies": "/assets/store/garden-supplies.jpg",
+    "interior": "/assets/store/interior.jpg"
+  },
+  "galleryCount": 26,
+  "namedCount": 13
+}
