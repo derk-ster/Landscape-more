@@ -49,15 +49,17 @@ body {
 .hero-highlight {
   position: relative;
   display: inline-block;
+  isolation: isolate;
 }
 
 .hero-highlight::after {
   content: "";
   position: absolute;
+  z-index: -1;
   left: 0;
   right: 0;
-  bottom: 0.08em;
-  height: 0.18em;
+  bottom: 0.02em;
+  height: 0.14em;
   border-radius: 9999px;
   background: linear-gradient(
     90deg,
