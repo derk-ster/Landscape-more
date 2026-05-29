@@ -70,11 +70,12 @@ export function Hero() {
             <Button
               variant="primary"
               glow
+              className="w-full sm:w-auto"
               onClick={() => scrollToId("project-finder")}
             >
               Find Supplies
             </Button>
-            <Button variant="outline" href={business.phoneTel}>
+            <Button variant="outline" href={business.phoneTel} className="w-full sm:w-auto">
               Call Store
             </Button>
           </div>

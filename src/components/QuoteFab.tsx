@@ -7,7 +7,8 @@ export function QuoteFab() {
   const { count, toggleDrawer } = useQuote();
 
   return (
-    <SpecialButtonEffects className="btn-special-wrap--primary fixed bottom-6 right-6 z-40 sm:hidden">
+    <div className="fixed bottom-6 right-6 z-40 sm:hidden">
+      <SpecialButtonEffects className="btn-special-wrap--primary">
       <button
         type="button"
         data-quote-target
@@ -28,5 +29,6 @@ export function QuoteFab() {
         </span>
       </button>
     </SpecialButtonEffects>
+    </div>
   );
 }
