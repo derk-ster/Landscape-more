@@ -66,7 +66,7 @@ export function Hero() {
             ))}
           </div>
 
-            <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+            <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center">
             <Button
               variant="primary"
               glow

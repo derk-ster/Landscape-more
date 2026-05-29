@@ -92,11 +92,14 @@ export function Button({
 
   if (!glow) return inner;
 
-  const isFullWidth = className?.includes("w-full");
+  const widthClasses = className
+    ?.split(/\s+/)
+    .filter((c) => /^(?:[a-z]+:)?w-/.test(c))
+    .join(" ");
 
   return (
     <SpecialButtonEffects
-      className={cn(isFullWidth && "w-full", `btn-special-wrap--${variant}`)}
+      className={cn(widthClasses, `btn-special-wrap--${variant}`)}
       disabled={disabled}
     >
       {inner}
