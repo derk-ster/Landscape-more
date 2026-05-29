@@ -2,7 +2,9 @@
 
 import { products, resolveProductGallerySrc } from "@/data/products";
 import { galleryManifest } from "@/data/images";
+import { PRICE_DISCLAIMER } from "@/data/prices";
 import { AddToQuoteButton } from "./AddToQuoteButton";
+import { ItemPrice } from "./ItemPrice";
 import { Reveal } from "./ui/Reveal";
 import { StoreImage } from "./StoreImage";
 
@@ -28,7 +30,7 @@ export function FeaturedProducts() {
             Featured supplies
           </h2>
           <p className="mt-1 text-sm text-sage-700">
-            Pictured in store. Call ahead to check stock.
+            Pictured in store with estimated prices. Call ahead to check stock.
           </p>
         </Reveal>
 
@@ -54,6 +56,7 @@ export function FeaturedProducts() {
                     <h3 className="mt-2 font-serif text-base text-sage-900 leading-snug">
                       {product.name}
                     </h3>
+                    <ItemPrice name={product.name} size="md" className="mt-1 block" />
                     <p className="mt-1 line-clamp-2 flex-1 text-xs text-sage-600">
                       {product.description}
                     </p>
@@ -68,6 +71,7 @@ export function FeaturedProducts() {
             );
           })}
         </div>
+        <p className="mt-4 text-center text-xs text-sage-500">{PRICE_DISCLAIMER}</p>
       </div>
     </section>
   );

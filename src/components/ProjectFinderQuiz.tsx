@@ -11,7 +11,9 @@ import { useQuote } from "@/context/QuoteContext";
 import { cn } from "@/lib/utils";
 import { useState, type MouseEvent } from "react";
 import { AddToQuoteButton } from "./AddToQuoteButton";
+import { ItemPrice } from "./ItemPrice";
 import { Button } from "./ui/Button";
+import { formatPriceTotal, sumItemPrices } from "@/data/prices";
 import { Reveal } from "./ui/Reveal";
 
 export function ProjectFinderQuiz() {
@@ -55,6 +57,8 @@ export function ProjectFinderQuiz() {
     addManyToQuote(result.starterList, "Project Finder", e.currentTarget);
     window.setTimeout(() => openDrawer(), 800);
   };
+
+  const listTotal = result ? sumItemPrices(result.starterList) : 0;
 
   return (
     <section
@@ -157,7 +161,10 @@ export function ProjectFinderQuiz() {
                           key={item}
                           className="flex items-center justify-between gap-3 rounded-xl border border-sage-100 bg-cream-50 px-3 py-2.5"
                         >
-                          <span className="min-w-0 flex-1 text-sm text-sage-700">{item}</span>
+                          <div className="min-w-0 flex-1">
+                            <span className="block text-sm text-sage-700">{item}</span>
+                            <ItemPrice name={item} className="mt-0.5" />
+                          </div>
                           <AddToQuoteButton
                             itemName={item}
                             source="Project Finder"
@@ -169,6 +176,11 @@ export function ProjectFinderQuiz() {
                         </li>
                       ))}
                     </ul>
+                    {listTotal > 0 && (
+                      <p className="mt-3 text-sm font-medium text-sage-800">
+                        List estimate: ~{formatPriceTotal(listTotal)}
+                      </p>
+                    )}
                   </div>
 
                   <p className="mt-4 text-sm text-sage-600">{result.visitNote}</p>

@@ -1,9 +1,11 @@
 "use client";
 
 import { business } from "@/data/business";
+import { formatPriceTotal, PRICE_DISCLAIMER, sumItemPrices } from "@/data/prices";
 import { useQuote } from "@/context/QuoteContext";
 import { useEffect } from "react";
 import { Button } from "./ui/Button";
+import { ItemPrice } from "./ItemPrice";
 
 export function QuoteListDrawer() {
   const {
@@ -30,6 +32,8 @@ export function QuoteListDrawer() {
 
   if (!isOpen) return null;
 
+  const quoteTotal = sumItemPrices(items.map((i) => i.name));
+
   return (
     <div className="fixed inset-0 z-[70] flex justify-end" role="dialog" aria-modal="true" aria-labelledby="quote-drawer-title">
       <button
@@ -44,7 +48,15 @@ export function QuoteListDrawer() {
             <h2 id="quote-drawer-title" className="font-serif text-xl text-sage-900">
               Quote List
             </h2>
-            <p className="text-sm text-sage-600">{count} {count === 1 ? "item" : "items"}</p>
+            <p className="text-sm text-sage-600">
+              {count} {count === 1 ? "item" : "items"}
+              {quoteTotal > 0 && (
+                <span className="font-medium text-sage-800">
+                  {" "}
+                  · est. ~{formatPriceTotal(quoteTotal)}
+                </span>
+              )}
+            </p>
           </div>
           <button
             type="button"
@@ -71,6 +83,7 @@ export function QuoteListDrawer() {
             </span>
           </div>
           <p className="mt-3 text-xs text-sage-600">{business.address}</p>
+          <p className="mt-2 text-xs text-sage-500">{PRICE_DISCLAIMER}</p>
           <a href={business.phoneTel} className="mt-1 block text-sm font-medium text-sage-800 hover:text-sage-900">
             {business.phone}
           </a>
@@ -88,8 +101,9 @@ export function QuoteListDrawer() {
                   key={item.id}
                   className="flex items-center justify-between gap-3 rounded-xl border border-sage-100 bg-white px-4 py-3"
                 >
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <span className="text-sm font-medium text-sage-800">{item.name}</span>
+                    <ItemPrice name={item.name} className="mt-0.5 block" />
                     {item.source && (
                       <span className="mt-0.5 block text-xs text-sage-500">{item.source}</span>
                     )}

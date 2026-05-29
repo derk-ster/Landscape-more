@@ -5,7 +5,9 @@ import { resolveCategorySrc } from "@/data/images";
 import { useQuote } from "@/context/QuoteContext";
 import { useEffect } from "react";
 import { AddToQuoteButton } from "./AddToQuoteButton";
+import { ItemPrice } from "./ItemPrice";
 import { StoreImage } from "./StoreImage";
+import { formatPriceTotal, sumItemPrices } from "@/data/prices";
 
 type Props = {
   category: Category | null;
@@ -32,6 +34,7 @@ export function CategoryDrawer({ category, onClose }: Props) {
 
   const starterOnList = category.starterItems.every((n) => isInQuote(n));
   const starterCount = category.starterItems.length;
+  const starterTotal = sumItemPrices(category.starterItems);
 
   return (
     <div
@@ -91,6 +94,7 @@ export function CategoryDrawer({ category, onClose }: Props) {
               >
                 <div className="min-w-0 flex-1">
                   <span className="block text-sm font-medium text-sage-800">{item.name}</span>
+                  <ItemPrice name={item.name} className="mt-0.5 block" />
                   {item.note && (
                     <span className="mt-0.5 block text-xs text-sage-500">{item.note}</span>
                   )}
@@ -114,19 +118,27 @@ export function CategoryDrawer({ category, onClose }: Props) {
             <p className="mt-1 text-xs text-sage-600">
               Adds these together if you tap the button below.
             </p>
-            <ul className="mt-3 space-y-1.5">
+            <ul className="mt-3 space-y-2">
               {category.starterItems.map((name) => (
-                <li key={name} className="flex items-center gap-2 text-sm text-sage-700">
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-sage-500" aria-hidden />
-                  <span className={isInQuote(name) ? "text-sage-500 line-through" : ""}>
-                    {name}
+                <li key={name} className="flex items-center justify-between gap-2 text-sm text-sage-700">
+                  <span className="flex min-w-0 items-center gap-2">
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-sage-500" aria-hidden />
+                    <span className={isInQuote(name) ? "text-sage-500 line-through" : ""}>
+                      {name}
+                    </span>
+                    {isInQuote(name) && (
+                      <span className="text-xs text-sage-500">(on list)</span>
+                    )}
                   </span>
-                  {isInQuote(name) && (
-                    <span className="text-xs text-sage-500">(on list)</span>
-                  )}
+                  <ItemPrice name={name} />
                 </li>
               ))}
             </ul>
+            {starterTotal > 0 && (
+              <p className="mt-3 text-sm font-medium text-sage-800">
+                Pack estimate: ~{formatPriceTotal(starterTotal)}
+              </p>
+            )}
             <button
               type="button"
               disabled={starterOnList}

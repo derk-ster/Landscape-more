@@ -5,6 +5,7 @@ import { resolveCategorySrc } from "@/data/images";
 import { useQuote } from "@/context/QuoteContext";
 import { useState } from "react";
 import { CategoryDrawer } from "./CategoryDrawer";
+import { ItemPrice } from "./ItemPrice";
 import { Reveal } from "./ui/Reveal";
 import { StoreImage } from "./StoreImage";
 
@@ -49,10 +50,11 @@ export function CategoryGrid() {
                   </span>
                   <h3 className="mt-3 font-serif text-lg text-sage-900">{cat.title}</h3>
                   <p className="mt-2 flex-1 text-sm text-sage-600">{cat.description}</p>
-                  <ul className="mt-3 space-y-0.5 text-xs text-sage-500" aria-label="Starter pack preview">
+                  <ul className="mt-3 space-y-1 text-xs text-sage-500" aria-label="Starter pack preview">
                     {cat.starterItems.map((item) => (
-                      <li key={item} className="truncate">
-                        · {item}
+                      <li key={item} className="flex items-baseline justify-between gap-2">
+                        <span className="truncate">· {item}</span>
+                        <ItemPrice name={item} />
                       </li>
                     ))}
                   </ul>
