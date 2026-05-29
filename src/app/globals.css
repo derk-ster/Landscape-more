@@ -45,48 +45,54 @@ body {
   );
 }
 
-/* Floating garden photos — side margins on wide screens */
-.floating-garden-photo--left {
-  left: max(1rem, calc((100vw - 80rem) / 2 - 6.5rem));
+/* Hero headline highlight */
+.hero-highlight {
+  position: relative;
+  display: inline-block;
 }
 
-.floating-garden-photo--right {
-  right: max(1rem, calc((100vw - 80rem) / 2 - 6.5rem));
+.hero-highlight::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.08em;
+  height: 0.18em;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    theme("colors.sage.500"),
+    theme("colors.gold.400"),
+    theme("colors.sage.600")
+  );
+  background-size: 200% 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation:
+    hero-underline-draw 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards,
+    hero-underline-shimmer 4s ease-in-out 1.4s infinite;
 }
 
-.floating-garden-photo {
-  transition: opacity 0.9s ease-out;
+@keyframes hero-underline-draw {
+  to {
+    transform: scaleX(1);
+  }
 }
 
-.floating-garden-photo__frame {
-  box-shadow:
-    0 10px 32px -12px rgba(69, 100, 69, 0.18),
-    0 0 0 1px rgba(255, 255, 255, 0.45) inset;
-  transform: rotate(var(--photo-rotate, 0deg));
-}
-
-.floating-garden-photo__frame--animate {
-  animation: garden-photo-float var(--float-duration, 9s) ease-in-out infinite;
-  animation-delay: var(--float-delay, 0s);
-}
-
-@keyframes garden-photo-float {
+@keyframes hero-underline-shimmer {
   0%,
   100% {
-    transform: rotate(var(--photo-rotate, 0deg)) translateY(0);
+    background-position: 0% 50%;
   }
   50% {
-    transform: rotate(calc(var(--photo-rotate, 0deg) + 2deg)) translateY(-10px);
+    background-position: 100% 50%;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .floating-garden-photo {
-    transition: opacity 0.2s ease;
-  }
-
-  .floating-garden-photo__frame--animate {
-    animation: none;
+  .hero-highlight::after {
+    animation: hero-underline-draw 0.01ms linear 0s forwards;
+    transform: scaleX(1);
   }
 }
 

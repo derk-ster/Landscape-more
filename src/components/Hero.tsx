@@ -49,10 +49,11 @@ export function Hero() {
             id="hero-heading"
             className="font-serif text-3xl font-semibold leading-tight text-sage-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight"
           >
-            Plants, pots, yard art, and supplies for your next project.
+            Plants, pots, yard art, and supplies for{" "}
+            <span className="hero-highlight">your next project</span>.
           </h1>
           <p className="mt-4 max-w-lg text-base text-sage-800/90 sm:text-lg">
-            Greenhouse plants, metal yard art, pottery, topsoil, river rock, and more on US-70 in Madill — a neighborhood shop worth the stop.
+            Greenhouse plants, metal yard art, pottery, topsoil, river rock, and more on US-70 in Madill, a neighborhood shop worth the stop.
           </p>
 
             <div className="mt-4 flex flex-wrap gap-2">
