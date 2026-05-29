@@ -11,8 +11,7 @@ const navLinks = [
   { label: "Products", id: "products" },
   { label: "Find & Calculate", id: "project-finder" },
   { label: "Reviews", id: "reviews" },
-  { label: "Hours", id: "hours" },
-  { label: "Contact", id: "contact" },
+  { label: "Contact & Hours", id: "contact" },
 ];
 
 export function Header() {
