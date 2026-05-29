@@ -68,7 +68,7 @@ export function ProjectFinderQuiz() {
             Find the right supplies
           </h2>
           <p className="mt-2 text-center text-sage-700">
-            Answer a few questions and get a starter list.
+            A few quick questions — we&apos;ll put together a starter list you can adjust.
           </p>
         </Reveal>
 

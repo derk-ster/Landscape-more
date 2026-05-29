@@ -10,12 +10,16 @@ import { StoreGallery } from "@/components/StoreGallery";
 import { Footer } from "@/components/Footer";
 import { QuoteListDrawer } from "@/components/QuoteListDrawer";
 import { QuoteFab } from "@/components/QuoteFab";
+import { FloatingGardenPhotos } from "@/components/FloatingGardenPhotos";
+import { SiteWarmth } from "@/components/SiteWarmth";
 
 export default function Home() {
   return (
     <>
+      <SiteWarmth />
+      <FloatingGardenPhotos />
       <Header />
-      <main>
+      <main className="relative z-[2]">
         <Hero />
         <CategoryGrid />
         <FeaturedProducts />
@@ -25,7 +29,9 @@ export default function Home() {
         <ContactSection />
         <StoreGallery />
       </main>
-      <Footer />
+      <div className="relative z-[2]">
+        <Footer />
+      </div>
       <QuoteListDrawer />
       <QuoteFab />
     </>

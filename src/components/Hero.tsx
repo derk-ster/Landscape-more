@@ -52,7 +52,7 @@ export function Hero() {
             Plants, pots, yard art, and supplies for your next project.
           </h1>
           <p className="mt-4 max-w-lg text-base text-sage-800/90 sm:text-lg">
-            Greenhouse plants, metal yard art, pottery, topsoil, river rock, and more on US-70 in Madill.
+            Greenhouse plants, metal yard art, pottery, topsoil, river rock, and more on US-70 in Madill — a neighborhood shop worth the stop.
           </p>
 
             <div className="mt-4 flex flex-wrap gap-2">

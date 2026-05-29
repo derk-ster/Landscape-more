@@ -29,6 +29,67 @@ body {
   @apply bg-cream-50 text-sage-900 antialiased;
 }
 
+/* Soft ambient warmth — site-wide */
+.site-warmth {
+  background:
+    radial-gradient(ellipse 55% 45% at 8% 15%, rgba(212, 228, 212, 0.22), transparent 68%),
+    radial-gradient(ellipse 50% 40% at 92% 55%, rgba(243, 237, 227, 0.35), transparent 70%),
+    radial-gradient(ellipse 70% 45% at 50% 100%, rgba(181, 208, 181, 0.1), transparent 72%);
+}
+
+.site-warmth-vignette {
+  background: radial-gradient(
+    ellipse 120% 90% at 50% 40%,
+    transparent 45%,
+    rgba(249, 246, 240, 0.55) 100%
+  );
+}
+
+/* Floating garden photos — side margins on wide screens */
+.floating-garden-photo--left {
+  left: max(1rem, calc((100vw - 80rem) / 2 - 6.5rem));
+}
+
+.floating-garden-photo--right {
+  right: max(1rem, calc((100vw - 80rem) / 2 - 6.5rem));
+}
+
+.floating-garden-photo {
+  transition: opacity 0.9s ease-out;
+}
+
+.floating-garden-photo__frame {
+  box-shadow:
+    0 10px 32px -12px rgba(69, 100, 69, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.45) inset;
+  transform: rotate(var(--photo-rotate, 0deg));
+}
+
+.floating-garden-photo__frame--animate {
+  animation: garden-photo-float var(--float-duration, 9s) ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
+}
+
+@keyframes garden-photo-float {
+  0%,
+  100% {
+    transform: rotate(var(--photo-rotate, 0deg)) translateY(0);
+  }
+  50% {
+    transform: rotate(calc(var(--photo-rotate, 0deg) + 2deg)) translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-garden-photo {
+    transition: opacity 0.2s ease;
+  }
+
+  .floating-garden-photo__frame--animate {
+    animation: none;
+  }
+}
+
 /* Nav link underline */
 .nav-link::after {
   content: "";

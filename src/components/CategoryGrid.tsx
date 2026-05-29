@@ -24,7 +24,7 @@ export function CategoryGrid() {
             Shop by category
           </h2>
           <p className="mt-2 max-w-xl text-sage-700">
-            Explore to add single items, or use a starter pack to add a few at once.
+            Browse what we carry, add what you need, or grab a starter pack when you&apos;re ready.
           </p>
         </Reveal>
 
