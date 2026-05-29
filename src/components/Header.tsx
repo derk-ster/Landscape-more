@@ -48,7 +48,7 @@ export function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 lg:px-8">
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <p className="hidden max-w-[7.5rem] text-[10px] leading-snug text-sage-500 xl:block xl:max-w-none xl:whitespace-nowrap xl:border-r xl:border-sage-200/80 xl:pr-3 xl:text-xs">
-            Demo website by Derek's website Services
+            Demo website by Derek&apos;s website Services
           </p>
           <button
             type="button"
@@ -57,7 +57,7 @@ export function Header() {
             aria-label="Landscape and More home"
           >
             <span className="block text-[10px] font-medium text-sage-500 xl:hidden">
-              Demo website by Derek's website Services
+              Demo website by Derek&apos;s website Services
             </span>
             <span className="block font-serif text-lg font-semibold text-sage-800 sm:text-xl">
               {business.name}
