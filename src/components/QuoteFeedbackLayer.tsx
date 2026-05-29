@@ -15,21 +15,21 @@ function formatToastMessage(toast: QuoteToast): { title: string; detail?: string
 
   if (added.length === 1 && skipped.length === 0) {
     return {
-      title: `Added to quote list`,
+      title: `Added to list`,
       detail: added[0],
     };
   }
 
   if (added.length > 1 && skipped.length === 0) {
     return {
-      title: `Added ${added.length} items to quote list`,
+      title: `Added ${added.length} items to list`,
       detail: added.join(", "),
     };
   }
 
   if (added.length === 0 && skipped.length === 1) {
     return {
-      title: `Already on your quote list`,
+      title: `Already on your list`,
       detail: skipped[0],
     };
   }

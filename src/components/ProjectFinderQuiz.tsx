@@ -16,7 +16,11 @@ import { Button } from "./ui/Button";
 import { formatPriceTotal, sumItemPrices } from "@/data/prices";
 import { Reveal } from "./ui/Reveal";
 
-export function ProjectFinderQuiz() {
+type Props = {
+  sideBySide?: boolean;
+};
+
+export function ProjectFinderQuiz({ sideBySide = false }: Props) {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [result, setResult] = useState<QuizResult | null>(null);
@@ -60,21 +64,19 @@ export function ProjectFinderQuiz() {
 
   const listTotal = result ? sumItemPrices(result.starterList) : 0;
 
-  return (
-    <section
-      id="project-finder"
-      className="section-tight bg-sage-50/60"
-      aria-labelledby="quiz-heading"
-    >
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <Reveal>
-          <h2 id="quiz-heading" className="font-serif text-2xl font-semibold text-sage-900 sm:text-3xl text-center">
-            Find the right supplies
-          </h2>
-          <p className="mt-2 text-center text-sage-700">
-            A few quick questions, we&apos;ll put together a starter list you can adjust.
-          </p>
-        </Reveal>
+  const content = (
+    <div className={sideBySide ? "w-full" : "mx-auto max-w-3xl px-4 sm:px-6 lg:px-8"}>
+      <Reveal>
+        <h2
+          id="quiz-heading"
+          className={`font-serif text-2xl font-semibold text-sage-900 sm:text-3xl ${sideBySide ? "text-left" : "text-center"}`}
+        >
+          Find the right supplies
+        </h2>
+        <p className={`mt-2 text-sage-700 ${sideBySide ? "text-left" : "text-center"}`}>
+          A few quick questions, we&apos;ll put together a starter list you can adjust.
+        </p>
+      </Reveal>
 
         <Reveal delay={100}>
           <div className="quiz-card mt-6 rounded-2xl border border-sage-200/60 bg-white p-5 shadow-card sm:p-6">
@@ -196,7 +198,7 @@ export function ProjectFinderQuiz() {
 
                   <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                     <Button variant="primary" glow onClick={handleAddToQuote}>
-                      Add {result.starterList.length} items to quote list
+                      Add {result.starterList.length} items to list
                     </Button>
                     <Button variant="outline" href={business.phoneTel}>
                       Call Store
@@ -227,6 +229,17 @@ export function ProjectFinderQuiz() {
           </div>
         </Reveal>
       </div>
+  );
+
+  if (sideBySide) return content;
+
+  return (
+    <section
+      id="project-finder"
+      className="section-tight bg-sage-50/60"
+      aria-labelledby="quiz-heading"
+    >
+      {content}
     </section>
   );
 }

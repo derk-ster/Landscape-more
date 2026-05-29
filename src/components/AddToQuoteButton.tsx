@@ -56,7 +56,7 @@ export function AddToQuoteButton({
           On list
         </>
       ) : (
-        children ?? "Add to Quote List"
+        children ?? "Add to list"
       )}
     </button>
   );

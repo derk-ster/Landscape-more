@@ -23,6 +23,14 @@ const assignments = {
   "interior.jpg": "Screenshot 2026-05-28 172145.png",
 };
 
+function needsCopy(srcPath, destPath) {
+  if (!fs.existsSync(destPath)) return true;
+  const srcStat = fs.statSync(srcPath);
+  const destStat = fs.statSync(destPath);
+  return srcStat.size !== destStat.size || srcStat.mtimeMs > destStat.mtimeMs;
+}
+
+let copied = 0;
 for (const [dest, src] of Object.entries(assignments)) {
   const srcPath = path.join(galleryDir, src);
   const destPath = path.join(storeDir, dest);
@@ -30,6 +38,12 @@ for (const [dest, src] of Object.entries(assignments)) {
     console.warn(`Skip ${dest}: missing ${src}`);
     continue;
   }
+  if (!needsCopy(srcPath, destPath)) continue;
   fs.copyFileSync(srcPath, destPath);
+  copied += 1;
   console.log(`→ ${dest}`);
+}
+
+if (copied === 0) {
+  console.log("Named store images up to date.");
 }

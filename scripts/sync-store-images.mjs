@@ -50,12 +50,41 @@ for (const slot of namedSlots) {
   }
 }
 
-const manifest = {
-  generatedAt: new Date().toISOString(),
+const payload = {
   gallery,
   named,
   galleryCount: gallery.length,
   namedCount: Object.keys(named).length,
+};
+
+function readExistingManifest() {
+  if (!fs.existsSync(manifestPath)) return null;
+  try {
+    return JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+  } catch {
+    return null;
+  }
+}
+
+function manifestUnchanged(existing) {
+  if (!existing) return false;
+  return (
+    JSON.stringify(existing.gallery) === JSON.stringify(payload.gallery) &&
+    JSON.stringify(existing.named) === JSON.stringify(payload.named)
+  );
+}
+
+const existing = readExistingManifest();
+if (manifestUnchanged(existing)) {
+  console.log(
+    `Store images unchanged: ${payload.galleryCount} in gallery/, ${payload.namedCount} named slots`
+  );
+  process.exit(0);
+}
+
+const manifest = {
+  generatedAt: new Date().toISOString(),
+  ...payload,
 };
 
 fs.mkdirSync(path.dirname(manifestPath), { recursive: true });

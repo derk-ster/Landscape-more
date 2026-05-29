@@ -4,8 +4,10 @@ import { products, resolveProductGallerySrc } from "@/data/products";
 import { galleryManifest } from "@/data/images";
 import { PRICE_DISCLAIMER } from "@/data/prices";
 import { AddToQuoteButton } from "./AddToQuoteButton";
+import { StockIndicator } from "./StockIndicator";
 import { ItemPrice } from "./ItemPrice";
 import { Reveal } from "./ui/Reveal";
+import { ScrollRowGrid } from "./ui/ScrollRowGrid";
 import { StoreImage } from "./StoreImage";
 
 export function FeaturedProducts() {
@@ -30,22 +32,30 @@ export function FeaturedProducts() {
             Featured supplies
           </h2>
           <p className="mt-1 text-sm text-sage-700">
-            Pictured in store with estimated prices. Call ahead to check stock.
+            Pictured in store with live stock counts — two rows shown, scroll for more.
           </p>
         </Reveal>
 
-        <div className="mt-6 grid gap-3 grid-cols-2 lg:grid-cols-4">
-          {withPhotos.map((product, i) => {
-            const src = resolveProductGallerySrc(product, galleryManifest.gallery)!;
-            return (
-              <Reveal key={product.id} delay={(i % 4) * 30}>
-                <article className="product-card group flex h-full flex-col overflow-hidden rounded-xl border border-sage-100/80 bg-white shadow-sm">
+        <Reveal delay={80}>
+          <ScrollRowGrid
+            className="mt-6"
+            columnMinWidth="11rem"
+            ariaLabel="Featured supplies"
+            hint="Scroll sideways for more featured items"
+          >
+            {withPhotos.map((product) => {
+              const src = resolveProductGallerySrc(product, galleryManifest.gallery)!;
+              return (
+                <article
+                  key={product.id}
+                  className="product-card group flex h-full flex-col overflow-hidden rounded-xl border border-sage-100/80 bg-white shadow-sm"
+                >
                   <div className="relative aspect-[5/4] overflow-hidden">
                     <StoreImage
                       src={src}
                       alt={product.name}
                       fill
-                      sizes="(max-width: 640px) 50vw, 25vw"
+                      sizes="220px"
                       className="object-cover transition duration-500 group-hover:scale-105"
                     />
                   </div>
@@ -57,6 +67,7 @@ export function FeaturedProducts() {
                       {product.name}
                     </h3>
                     <ItemPrice name={product.name} size="md" className="mt-1 block" />
+                    <StockIndicator itemName={product.name} className="mt-1.5" />
                     <p className="mt-1 line-clamp-2 flex-1 text-xs text-sage-600">
                       {product.description}
                     </p>
@@ -67,10 +78,11 @@ export function FeaturedProducts() {
                     />
                   </div>
                 </article>
-              </Reveal>
-            );
-          })}
-        </div>
+              );
+            })}
+          </ScrollRowGrid>
+        </Reveal>
+
         <p className="mt-4 text-center text-xs text-sage-500">{PRICE_DISCLAIMER}</p>
       </div>
     </section>

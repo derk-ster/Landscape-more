@@ -19,8 +19,18 @@ export default function Home() {
         <Hero />
         <CategoryGrid />
         <FeaturedProducts />
-        <ProjectFinderQuiz />
-        <MaterialCalculator />
+        <section
+          id="project-finder"
+          className="section-tight scroll-mt-20 bg-sage-50/60"
+          aria-labelledby="quiz-heading"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-8 xl:gap-12">
+              <ProjectFinderQuiz sideBySide />
+              <MaterialCalculator sideBySide />
+            </div>
+          </div>
+        </section>
         <ReviewsSection />
         <ContactSection />
         <StoreGallery />

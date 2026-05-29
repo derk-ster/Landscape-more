@@ -6,6 +6,7 @@ import { useQuote } from "@/context/QuoteContext";
 import { useEffect } from "react";
 import { AddToQuoteButton } from "./AddToQuoteButton";
 import { ItemPrice } from "./ItemPrice";
+import { StockIndicator } from "./StockIndicator";
 import { StoreImage } from "./StoreImage";
 import { formatPriceTotal, sumItemPrices } from "@/data/prices";
 
@@ -84,7 +85,7 @@ export function CategoryDrawer({ category, onClose }: Props) {
         <div className="flex-1 overflow-y-auto p-5">
           <h3 className="text-sm font-semibold text-sage-800">Add one item</h3>
           <p className="mt-1 text-xs text-sage-600">
-            Tap Add next to anything you want on your quote list.
+            Tap Add next to anything you want on your list.
           </p>
           <ul className="mt-3 space-y-2">
             {category.exampleItems.map((item) => (
@@ -95,6 +96,7 @@ export function CategoryDrawer({ category, onClose }: Props) {
                 <div className="min-w-0 flex-1">
                   <span className="block text-sm font-medium text-sage-800">{item.name}</span>
                   <ItemPrice name={item.name} className="mt-0.5 block" />
+                  <StockIndicator itemName={item.name} className="mt-1" />
                   {item.note && (
                     <span className="mt-0.5 block text-xs text-sage-500">{item.note}</span>
                   )}

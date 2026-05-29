@@ -25,7 +25,8 @@ if (broken) {
     `\n⚠ Port ${port} is in use but returning errors (broken dev server).\n` +
       `  Stop the old process, then run dev again:\n` +
       `    npx kill-port ${port}\n` +
-      `  Or close the other terminal running "next dev".\n`
+      `  Or close the other terminal running "next dev".\n` +
+      `  If the page keeps reloading, run: npm run dev:clean\n`
   );
 }
 

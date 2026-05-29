@@ -4,6 +4,10 @@ import { business } from "@/data/business";
 import { useMemo, useState } from "react";
 import { Reveal } from "./ui/Reveal";
 
+type Props = {
+  sideBySide?: boolean;
+};
+
 type MaterialType = "mulch" | "soil" | "rock";
 
 const materials: { id: MaterialType; label: string }[] = [
@@ -16,7 +20,7 @@ function round2(n: number): number {
   return Math.round(n * 100) / 100;
 }
 
-export function MaterialCalculator() {
+export function MaterialCalculator({ sideBySide = false }: Props) {
   const [length, setLength] = useState("");
   const [width, setWidth] = useState("");
   const [depth, setDepth] = useState("");
@@ -57,21 +61,22 @@ export function MaterialCalculator() {
 
   const hasResult = !("error" in result);
 
-  return (
-    <section
-      id="calculator"
-      className="section-tight bg-white"
-      aria-labelledby="calculator-heading"
+  const content = (
+    <div
+      id={sideBySide ? "calculator" : undefined}
+      className={sideBySide ? "w-full" : "mx-auto max-w-2xl px-4 sm:px-6 lg:px-8"}
     >
-      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-        <Reveal>
-          <h2 id="calculator-heading" className="font-serif text-2xl font-semibold text-sage-900 sm:text-3xl text-center">
-            Material calculator
-          </h2>
-          <p className="mt-2 text-center text-sage-700">
-            Estimate mulch, soil, or rock for your project area.
-          </p>
-        </Reveal>
+      <Reveal>
+        <h2
+          id="calculator-heading"
+          className={`font-serif text-2xl font-semibold text-sage-900 sm:text-3xl ${sideBySide ? "text-left" : "text-center"}`}
+        >
+          Material calculator
+        </h2>
+        <p className={`mt-2 text-sage-700 ${sideBySide ? "text-left" : "text-center"}`}>
+          Estimate mulch, soil, or rock for your project area.
+        </p>
+      </Reveal>
 
         <Reveal delay={100}>
           <div className="calculator-card mt-6 rounded-2xl border border-sage-200/60 bg-cream-50 p-5 shadow-card sm:p-6">
@@ -177,6 +182,17 @@ export function MaterialCalculator() {
           </div>
         </Reveal>
       </div>
+  );
+
+  if (sideBySide) return content;
+
+  return (
+    <section
+      id="calculator"
+      className="section-tight bg-white"
+      aria-labelledby="calculator-heading"
+    >
+      {content}
     </section>
   );
 }

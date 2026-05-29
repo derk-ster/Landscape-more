@@ -10,8 +10,7 @@ const navLinks = [
   { label: "Home", id: "home" },
   { label: "Products", id: "products" },
   { label: "Find & Calculate", id: "project-finder" },
-  { label: "Reviews", id: "reviews" },
-  { label: "Contact & Hours", id: "contact" },
+  { label: "Reviews, Contact & Hours", id: "reviews" },
 ];
 
 export function Header() {
@@ -49,7 +48,7 @@ export function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 lg:px-8">
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <p className="hidden max-w-[7.5rem] text-[10px] leading-snug text-sage-500 xl:block xl:max-w-none xl:whitespace-nowrap xl:border-r xl:border-sage-200/80 xl:pr-3 xl:text-xs">
-            Demo website by Derek Ray
+            Demo website by Derek's website Services
           </p>
           <button
             type="button"
@@ -58,7 +57,7 @@ export function Header() {
             aria-label="Landscape and More home"
           >
             <span className="block text-[10px] font-medium text-sage-500 xl:hidden">
-              Demo website by Derek Ray
+              Demo website by Derek's website Services
             </span>
             <span className="block font-serif text-lg font-semibold text-sage-800 sm:text-xl">
               {business.name}
@@ -89,9 +88,9 @@ export function Header() {
             data-quote-target
             onClick={toggleDrawer}
             className="quote-list-target relative hidden rounded-xl border border-sage-200 bg-cream-50 px-3 py-2 text-sm text-sage-700 transition hover:bg-sage-50 sm:block"
-            aria-label={`Quote list, ${count} items`}
+            aria-label={`List, ${count} items`}
           >
-            Quote List
+            List
             {count > 0 && (
               <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-sage-600 text-xs text-white">
                 {count}
@@ -161,7 +160,7 @@ export function Header() {
             }}
             className="rounded-lg px-3 py-3 text-left text-sage-800 hover:bg-sage-50"
           >
-            Quote List ({count})
+            List ({count})
           </button>
           <Button
             variant="primary"

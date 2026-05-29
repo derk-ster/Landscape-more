@@ -12,6 +12,7 @@ import { useMemo, useState } from "react";
 import { GalleryLightbox, type LightboxSlide } from "./GalleryLightbox";
 import { StoreImage } from "./StoreImage";
 import { Reveal } from "./ui/Reveal";
+import { ScrollRowGrid } from "./ui/ScrollRowGrid";
 
 type GalleryItem = LightboxSlide & { id: string };
 
@@ -23,12 +24,12 @@ function SectionHeader({
   description: string;
 }) {
   return (
-    <div className="gallery-section-header mb-4 mt-6 first:mt-0">
-      <h3 className="w-fit font-serif text-xl font-semibold text-sage-900 sm:text-2xl">
+    <div className="gallery-section-header mb-3">
+      <h3 className="w-fit font-serif text-lg font-semibold text-sage-900 sm:text-xl">
         <span className="block">{title}</span>
         <span className="gallery-section-rule mt-2 block" aria-hidden />
       </h3>
-      <p className="mt-3 max-w-2xl text-sm text-sage-600">{description}</p>
+      <p className="mt-2 text-sm text-sage-600 line-clamp-2">{description}</p>
     </div>
   );
 }
@@ -44,7 +45,7 @@ function GalleryThumb({
     <button
       type="button"
       onClick={onOpen}
-      className="gallery-thumb group relative h-full min-h-0 w-full overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-500 focus-visible:ring-offset-2"
+      className="gallery-thumb group relative h-full w-full overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-500 focus-visible:ring-offset-2"
     >
       <span className="gallery-thumb-border" aria-hidden />
       <span className="gallery-thumb-inner block h-full w-full overflow-hidden rounded-2xl">
@@ -52,7 +53,7 @@ function GalleryThumb({
           src={item.src}
           alt={item.alt}
           fill
-          sizes="(max-width: 640px) 50vw, 33vw"
+          sizes="240px"
           className="object-cover transition duration-500 ease-out group-hover:scale-[1.04]"
         />
         <span className="absolute inset-0 bg-sage-900/0 transition duration-300 group-hover:bg-sage-900/[0.08]" />
@@ -116,38 +117,51 @@ export function StoreGallery() {
             At the store
           </h2>
           <p className="mt-2 max-w-xl text-sage-700">
-            Browse by area. Tap a photo to enlarge.
+            One look around the shop — scroll sideways to browse each area. Tap a photo to enlarge.
           </p>
         </Reveal>
 
-        <div className="mt-6 space-y-3">
-          {sectionsWithPhotos.map((section, sectionIndex) => (
-            <Reveal key={section.id} delay={sectionIndex * 50}>
-              <div className="gallery-section-block rounded-2xl border border-sage-100/80 bg-white/60 px-3 py-4 sm:px-5 sm:py-5">
-                <SectionHeader
-                  title={section.title}
-                  description={section.description}
-                />
-
-                <div className="gallery-grid">
-                  {section.photos.map((item) => (
-                    <GalleryThumb
-                      key={item.id}
-                      item={item}
-                      onOpen={() =>
-                        setLightbox({
-                          src: item.src,
-                          alt: item.alt,
-                          caption: item.caption,
-                        })
-                      }
-                    />
-                  ))}
+        <Reveal delay={80}>
+          <div className="gallery-section-block mt-6 rounded-2xl border border-sage-100/80 bg-white/60 p-3 sm:p-5">
+            <div
+              className="store-gallery-panel sm:gap-5"
+              role="region"
+              aria-label="Store photo areas"
+            >
+              {sectionsWithPhotos.map((section) => (
+                <div key={section.id} className="store-gallery-slide min-w-0">
+                  <SectionHeader
+                    title={section.title}
+                    description={section.description}
+                  />
+                  <ScrollRowGrid
+                    columnMinWidth="9.5rem"
+                    fixedColumns
+                    ariaLabel={`${section.title} photos`}
+                    hint=""
+                  >
+                    {section.photos.map((item) => (
+                      <GalleryThumb
+                        key={item.id}
+                        item={item}
+                        onOpen={() =>
+                          setLightbox({
+                            src: item.src,
+                            alt: item.alt,
+                            caption: item.caption,
+                          })
+                        }
+                      />
+                    ))}
+                  </ScrollRowGrid>
                 </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+              ))}
+            </div>
+            <p className="scroll-row-grid-hint mt-1.5" aria-hidden>
+              Scroll sideways to see more areas of the store
+            </p>
+          </div>
+        </Reveal>
       </div>
 
       <GalleryLightbox slide={lightbox} onClose={() => setLightbox(null)} />
