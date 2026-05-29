@@ -5,7 +5,6 @@ import { HERO_GALLERY_FILE } from "@/data/gallery-sections";
 import { galleryManifest } from "@/data/images";
 import { scrollToId } from "@/lib/utils";
 import { Button } from "./ui/Button";
-import { Reveal } from "./ui/Reveal";
 import { StoreImage } from "./StoreImage";
 
 const badges = ["4.5 Stars", "Delivery Available"];
@@ -44,15 +43,13 @@ export function Hero() {
       )}
 
       <div className="relative z-10 mx-auto flex min-h-[min(72vh,520px)] max-w-7xl flex-col justify-center px-4 py-24 sm:px-6 sm:py-28 lg:px-8">
-        <Reveal className="max-w-2xl">
+        <div className="max-w-2xl">
           <h1
             id="hero-heading"
             className="font-serif text-3xl font-semibold leading-tight text-sage-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight"
           >
             Plants, pots, yard art, and supplies for{" "}
-            <span className="hero-highlight">
-              <span className="relative z-[1]">your next project</span>
-            </span>.
+            <span className="hero-highlight">your next project</span>.
           </h1>
           <p className="mt-4 max-w-lg text-base text-sage-800/90 sm:text-lg">
             Greenhouse plants, metal yard art, pottery, topsoil, river rock, and more on US-70 in Madill, a neighborhood shop worth the stop.
@@ -81,7 +78,7 @@ export function Hero() {
               Call Store
             </Button>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

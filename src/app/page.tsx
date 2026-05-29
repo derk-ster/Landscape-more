@@ -10,12 +10,10 @@ import { StoreGallery } from "@/components/StoreGallery";
 import { Footer } from "@/components/Footer";
 import { QuoteListDrawer } from "@/components/QuoteListDrawer";
 import { QuoteFab } from "@/components/QuoteFab";
-import { SiteWarmth } from "@/components/SiteWarmth";
 
 export default function Home() {
   return (
     <>
-      <SiteWarmth />
       <Header />
       <main>
         <Hero />

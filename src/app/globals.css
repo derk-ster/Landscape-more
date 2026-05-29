@@ -27,73 +27,41 @@ html {
 
 body {
   @apply bg-cream-50 text-sage-900 antialiased;
+  background-image:
+    radial-gradient(ellipse 55% 45% at 8% 15%, rgba(212, 228, 212, 0.16), transparent 68%),
+    radial-gradient(ellipse 50% 40% at 92% 55%, rgba(243, 237, 227, 0.22), transparent 70%);
+  background-attachment: fixed;
 }
 
-/* Soft ambient warmth — site-wide */
-.site-warmth {
-  background:
-    radial-gradient(ellipse 55% 45% at 8% 15%, rgba(212, 228, 212, 0.22), transparent 68%),
-    radial-gradient(ellipse 50% 40% at 92% 55%, rgba(243, 237, 227, 0.35), transparent 70%),
-    radial-gradient(ellipse 70% 45% at 50% 100%, rgba(181, 208, 181, 0.1), transparent 72%);
-}
-
-.site-warmth-vignette {
-  background: radial-gradient(
-    ellipse 120% 90% at 50% 40%,
-    transparent 45%,
-    rgba(249, 246, 240, 0.55) 100%
-  );
-}
-
-/* Hero headline highlight */
+/* Hero headline highlight — full-width underline, draws left to right */
 .hero-highlight {
   position: relative;
   display: inline-block;
-  isolation: isolate;
 }
 
 .hero-highlight::after {
   content: "";
   position: absolute;
-  z-index: -1;
   left: 0;
   right: 0;
-  bottom: 0.02em;
-  height: 0.14em;
-  border-radius: 9999px;
-  background: linear-gradient(
-    90deg,
-    theme("colors.sage.500"),
-    theme("colors.gold.400"),
-    theme("colors.sage.600")
-  );
-  background-size: 200% 100%;
+  bottom: 4px;
+  height: 2px;
+  background: theme("colors.sage.500");
+  border-radius: 1px;
   transform: scaleX(0);
   transform-origin: left center;
-  animation:
-    hero-underline-draw 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards,
-    hero-underline-shimmer 4s ease-in-out 1.4s infinite;
+  animation: hero-underline-in 0.55s ease 0.35s forwards;
 }
 
-@keyframes hero-underline-draw {
+@keyframes hero-underline-in {
   to {
     transform: scaleX(1);
   }
 }
 
-@keyframes hero-underline-shimmer {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .hero-highlight::after {
-    animation: hero-underline-draw 0.01ms linear 0s forwards;
+    animation: none;
     transform: scaleX(1);
   }
 }
